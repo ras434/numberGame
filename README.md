@@ -60,7 +60,7 @@
 `    
 
 <blockquote>
-*Input/Options:*</br>
+Input/Options:</br>
   &emsp;[1...100]&emsp;&emsp;&emsp;&emsp;Your guess.  A number between 1 and 100.</br>
   &emsp;[888]&emsp;&emsp;&emsp;&emsp;&emsp;Restart game process by reloading 'numberGame.py'.</br>
   &emsp;[999]&emsp;&emsp;&emsp;&emsp;&emsp;Exit mid-game.  Game will exit after winning or if you guess 15 times.</br>
@@ -68,7 +68,7 @@
 
 ### Credits:
 
-  **Game** based on example from **Richard White**</br> 
+  **Game** based on example from **Richard White**</br>
   &emsp;(Jan. 16, 2012; https://www.youtube.com/watch?v=pofWfJc3Zog)</br>
   **Restart features** based on example from **Petr Zemek**</br>
   &emsp;(_"Restarting a Python Script Within Itself"_ </br>  &emsp;https://blog.petrzemek.net/2014/03/23/restarting-a-python-script-within-itself/)</br>
