@@ -1,12 +1,21 @@
 #!/usr/bin/env python
-import random, time
+import random, time, sys
+from colorama import Fore
+import os
 
 userGuesses = []
+
+WATCHED_FILES = [__file__]		# To add files to watch, create comma seperated list [file1, file2, file3]
+WATCHED_FILES_MTIMES = [(f, os.path.getmtime(f)) for f in WATCHED_FILES]
 
 def main():
 	# Initialize the program
 	global userGuesses
+	clearScreen()
 	print("Guess a number between 1 and 100.")
+	time.sleep(1)
+	print("Type '" + Fore.YELLOW + "999" + Fore.RESET + "' to exit game.")
+	time.sleep(1)
 	# randomNumber = 35
 	tries = 0
 	randomNumber = random.randint(1,100)
@@ -18,10 +27,11 @@ def main():
 	highGuess = 100
 	lowGuess = 1
 
-	# Run through the guessing process
+# Run through the guessing process
 	while not found:
 		clearScreen()
-		print("Guesses: " + str(tries) + " l: " + str(lowGuess) + " h: " + str(highGuess))
+		checkFiles()
+		print("Tries: [" + str(tries) + "]\nGuess a number between " + str(lowGuess) + " and " + str(highGuess))
 		if len(userGuesses)>0:
 			print("Last guess: " + str(userGuess) + ", " + hint)
 			hint = ""
@@ -38,12 +48,17 @@ def main():
 			hint = ""
 		except:
 			print("You must use a number!")
-			hint = "This time, use a number (or type '999' to exit)"
-			time.sleep(1)
+			print("This time, use a number (or type '" + Fore.YELLOW + "999" + Fore.RESET + "' to exit)")
+			time.sleep(3)
 			continue
 		if userGuess == 999:
 			print("Goodbye")
 			exit()
+		if userGuess == 888:
+			print("Restarting...")
+			time.sleep(2)
+			restartMe()
+
 		if userGuess == randomNumber:
 			print("You got it!")
 			time.sleep(1)
@@ -78,8 +93,21 @@ def main():
 	print("You guessed " + str(tries) + " times.")
 	allGuesses()
 
+def checkFiles():
+	# Check to see if game file has been modified while it is running.
+	# If the file has been modified then restart.
+	for f, mtime in WATCHED_FILES_MTIMES:
+		if os.path.getmtime(f) != mtime:
+			clearScreen()
+			print("File modified.  Restarting game.")
+			time.sleep(2)
+			restartMe()
+
 def numberLine():
 	pass
+
+def restartMe():
+	os.execv(__file__, sys.argv)
 
 def allGuesses():
 	global userGuesses
