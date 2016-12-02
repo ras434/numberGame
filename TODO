@@ -5,3 +5,9 @@ Add dependancy check (specifically for colorama)
 Add ability to install dependancies
 Add support for Windows environments 
   'clear' doesn't work in Windows.  Detect and use 'cls' instead for Windows.
+Add TRY block for restart '888' feature, os.execv(__file__, sys.argv)
+  -This may generate "OSError: [Errno 13] Permission denied"
+Add check for empty 'hint' variable.  If empty, don't add comma after last guess value
+Add handle for last guess not being a number (i.e. letter)
+  -After at least one guess, the prior numeric guess before the non-numeric guess is used.
+    -This should not count as a guess (or repeated guess).  Instead, just reprompt and maintain current guess list and try count.
