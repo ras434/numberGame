@@ -1,0 +1,7 @@
+Add dependancy check (specifically for colorama)
+  - Detect colorama
+  - Download package if needed, and run install
+  - Install any Windows specific requirements
+Add ability to install dependancies
+Add support for Windows environments 
+  'clear' doesn't work in Windows.  Detect and use 'cls' instead for Windows.
