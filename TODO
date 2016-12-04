@@ -4,7 +4,7 @@ Add dependancy check (specifically for colorama)
   - Install any Windows specific requirements
 Add ability to install dependancies
 Add support for Windows environments 
-  'clear' doesn't work in Windows.  Detect and use 'cls' instead for Windows.
+  'clear' doesn't work in Windows.  Detect and use 'cls' instead for Windows. [DONE]
 Add TRY block for restart '888' feature, os.execv(__file__, sys.argv)
   -This may generate "OSError: [Errno 13] Permission denied"
 Add check for empty 'hint' variable.  If empty, don't add comma after last guess value
