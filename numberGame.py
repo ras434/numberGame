@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import random, time, sys
+import random, time, sys, platform, curses
 from colorama import Fore
 import os
 
@@ -10,8 +10,26 @@ WATCHED_FILES_MTIMES = [(f, os.path.getmtime(f)) for f in WATCHED_FILES]
 
 def main():
 	# Initialize the program
+
+	# Check dependancies
+
+		# Determine if running under Windows OS
+
+		# Determine if colorama is available
+
+		# Install any Windows specific requirements, if needed
+
+
 	global userGuesses
-	clearScreen()
+	checkDependancies()
+	# clearScreen()						# might not need this function due to curses features
+	myscreen = curses.initscr()
+	myscreen.border(0)
+	myscreen.addstr(12, 25, "numberGame.py")
+	myscreen.refresh()
+	# myscreen.getch()
+	time.sleep(1)
+	curses.endwin()
 	print("Guess a number between 1 and 100.")
 	time.sleep(1)
 	print("Type '" + Fore.YELLOW + "999" + Fore.RESET + "' to exit game.")
@@ -107,7 +125,7 @@ def numberLine():
 	pass
 
 def restartMe():
-	os.execv(__file__, sys.argv)
+	os.execv(__file__, sys.argv)		# TODO: Set this in TRY block in case there is a permission failure here
 
 def allGuesses():
 	global userGuesses
@@ -115,7 +133,21 @@ def allGuesses():
 
 def clearScreen():
 	import subprocess as sp
-	tmp = sp.call('clear',shell=True)
+	if platform.system() == "Darwin":
+		tmp = sp.call('clear',shell=True)	# Use 'clear' method for OS X
+	else:
+		tmp = sp.call('cls',shell=True)		# Use 'cls' method for Windows (assuming non OS X is Windows)
+
+def checkDependancies():
+	for mod in sys.modules:				# TODO: Add list that contains depends. then loop through list
+	# Make sys.modules a list, then compare to dependancies list
+		if mod == "colorama":
+			print("dependancies: Found colorama")
+		if mod == "platform":
+			print("dependancies: Found platform")
+		if mod == "time":
+			print("dependancies: Found time")
+	time.sleep(2)
 
 if __name__ == "__main__":
 	main()
