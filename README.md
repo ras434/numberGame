@@ -1,9 +1,9 @@
 # numberGame
 &emsp;
-*v1.1 - RAS434, 2019Jul09; https://github.com/ras434/numberGame*
-  -- Refactored for PEP8
-  -- Fixed many typos
-  -- Removed unused variables  
+*v1.1 - RAS434, 2019Jul09; https://github.com/ras434/numberGame*<br>
+    -Refactored for PEP8<br>
+    -Fixed many typos<br>
+    -Removed unused variables<br>
 *v1.0 - RAS434, 2016Nov30; https://github.com/ras434/numberGame*
 
 &emsp;Number guessing game.
